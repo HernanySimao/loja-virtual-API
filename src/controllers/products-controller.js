@@ -26,6 +26,28 @@ exports.getByName = async (req, res) => {
     res.status(200).json(produto)
 }
 
+exports.getFilterPrice = async (req, res) => {
+    const { preco } = req.params
+    const produtos = await product.find({ preco: preco }, '-_id nome descricao preco status')
+
+    if (!produtos) {
+        res.status(422).send({
+            msg: "Sem nenhum item no Stock!"
+        })
+    }
+
+    if (produtos == "") {
+        res.status(422).send({
+            msg: "Não temos produtos de " + preco + "Kz no nosso Stock!"
+        })
+    }
+    try {
+        res.status(200).json({ produtos });
+    } catch (error) {
+        msg: error
+    }
+}
+
 
 
 exports.getByid = async (req, res) => {

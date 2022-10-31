@@ -6,9 +6,11 @@ const jwt = require('jsonwebtoken')
 app.get('/', controller.get);
 app.get('/:id', checkToken, controller.getByid);
 app.get('/search/:nome', checkToken, controller.getByName);
+app.get('/user/search/:preco', controller.getFilterPrice);
 app.post('/', controller.post);
 app.put('/:id', checkToken, controller.put);
 app.delete('/:id', checkToken, controller.delete);
+
 
 
 function checkToken(req, res, next) {

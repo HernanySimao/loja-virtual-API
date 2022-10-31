@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 require('dotenv').config()
 
+
+
 app.use(bodyParser.json());
 app.use(express.json());
 
@@ -29,6 +31,7 @@ app.use('/user', userRouter);
 
 
 
+
 app.listen(8080, (req, res) => {
-    console.log("Servidor rodando");
+    console.log("Servidor rodando ");
 })

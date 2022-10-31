@@ -3,6 +3,7 @@ const User = mongoose.model('usuario');
 const md5 = require('md5');
 const jwt = require('jsonwebtoken');
 
+
 exports.get = (req, res) => {
     User.find({ active: true }, '-_id nome email numero').then((data) => {
         res.status(200).send(data)
@@ -42,7 +43,7 @@ exports.post = async (req, res) => {
         })
     }
 
-    if (senha <= 5 && senha == null) {
+    if (senha <= 5 || senha == null) {
         res.status(200).send({
             msg: "A sua senha é fraca, tente novamente!"
         })
@@ -141,4 +142,4 @@ exports.delete = async (req, res) => {
     res.status(200).send({
         msg: "Produto eliminado!"
     })
-}
+}   

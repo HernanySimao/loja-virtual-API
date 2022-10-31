@@ -3,7 +3,6 @@ const app = express.Router();
 const controller = require('../controllers/usuario-controller');
 const jwt = require('jsonwebtoken')
 
-
 app.get('/', controller.get);
 app.post('/', controller.post);
 app.post('/auth/login', controller.login);
